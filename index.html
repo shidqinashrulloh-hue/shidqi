@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CALCTRONIX v2.0 - Shidqi Nashrulloh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050507;
+            --accent-blue: #0ea5e9;
+            --accent-purple: #a855f7;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            margin: 0;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent-blue);
+            transform: scale(1.4);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .formula-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
+        }
+
+        @media (max-width: 640px) {
+            .nav-dots { right: 0.75rem; }
+            .dot { width: 8px; height: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-dots">
+        <div class="dot active" onclick="scrollToSection(0)"></div>
+        <div class="dot" onclick="scrollToSection(1)"></div>
+        <div class="dot" onclick="scrollToSection(2)"></div>
+        <div class="dot" onclick="scrollToSection(3)"></div>
+        <div class="dot" onclick="scrollToSection(4)"></div>
+    </div>
+
+    <section id="s1">
+        <div class="text-center px-4">
+            <span class="inline-block py-1 px-3 rounded-full bg-sky-500/10 text-sky-400 text-[10px] font-bold tracking-widest uppercase mb-4 border border-sky-500/20">
+                Engineering Toolkit v2.0
+            </span>
+            <h1 class="text-5xl md:text-9xl font-black mb-6 tracking-tighter">
+                CALC<span class="text-sky-500">TRONIX</span>
+            </h1>
+            <p class="text-sm md:text-xl text-slate-400 max-w-xl mx-auto font-light leading-relaxed">
+                Platform kalkulasi komponen elektronika modern dengan presisi tinggi.
+            </p>
+            <button onclick="scrollToSection(1)" class="mt-8 px-10 py-4 bg-sky-500 text-black font-black rounded-xl active:scale-95 transition-all shadow-lg shadow-sky-500/20">
+                MULAI EKSPLORASI
+            </button>
+        </div>
+    </section>
+
+    <section id="s2">
+        <div class="glass-card p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl font-black text-sky-500/20">01</span>
+                        <h2 class="text-3xl md:text-5xl font-bold">Resistor</h2>
+                    </div>
+                    <p class="text-sm md:text-base text-slate-300 mb-8 font-light">
+                        Komponen yang menghambat aliran listrik untuk mengontrol tegangan dalam sirkuit.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="formula-box p-4 rounded-xl">
+                            <p class="text-[10px] text-sky-400 font-bold uppercase mb-1">Koneksi Seri</p>
+                            <code class="text-lg md:text-xl font-bold">Rt = R1 + R2</code>
+                        </div>
+                        <div class="formula-box p-4 rounded-xl border-slate-600">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">Koneksi Paralel</p>
+                            <code class="text-lg md:text-xl font-bold">1/Rt = 1/R1 + 1/R2</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=400" class="rounded-3xl grayscale opacity-50">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="s3">
+        <div class="glass-card p-8 md:p-12 text-center">
+            <h2 class="text-3xl font-bold mb-8">Kalkulator Resistor</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="text-left">
+                    <label class="text-[10px] font-bold text-slate-500 ml-2 uppercase">Nilai R1 (Ω)</label>
+                    <input type="number" id="r1" class="w-full p-4 mt-1 rounded-xl text-white font-mono" placeholder="0">
+                </div>
+                <div class="text-left">
+                    <label class="text-[10px] font-bold text-slate-500 ml-2 uppercase">Nilai R2 (Ω)</label>
+                    <input type="number" id="r2" class="w-full p-4 mt-1 rounded-xl text-white font-mono" placeholder="0">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="calculateResistor('seri')" class="py-4 bg-white/5 hover:bg-white/10 rounded-xl font-bold transition-all border border-white/5">SERI</button>
+                <button onclick="calculateResistor('paralel')" class="py-4 bg-sky-500 text-black rounded-xl font-black transition-all">PARALEL</button>
+            </div>
+            <div id="res-result" class="mt-8 p-6 bg-sky-500/5 rounded-2xl border border-sky-500/20 hidden animate-pulse">
+                <p class="text-[10px] text-sky-500 font-bold uppercase">Hambatan Total</p>
+                <p id="res-val" class="text-4xl font-black text-white mt-2">0 Ω</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="s4">
+        <div class="glass-card p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400" class="rounded-3xl grayscale opacity-50">
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl font-black text-purple-500/20">02</span>
+                        <h2 class="text-3xl md:text-5xl font-bold">Kapasitor</h2>
+                    </div>
+                    <p class="text-sm md:text-base text-slate-300 mb-8 font-light">
+                        Penyimpan muatan listrik sementara untuk menstabilkan tegangan.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="formula-box p-4 rounded-xl !border-purple-500">
+                            <p class="text-[10px] text-purple-400 font-bold uppercase mb-1">Koneksi Paralel</p>
+                            <code class="text-lg md:text-xl font-bold">Ct = C1 + C2</code>
+                        </div>
+                        <div class="formula-box p-4 rounded-xl border-slate-600">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">Koneksi Seri</p>
+                            <code class="text-lg md:text-xl font-bold">1/Ct = 1/C1 + 1/C2</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="s5">
+        <div class="glass-card p-8 md:p-12 text-center">
+            <h2 class="text-3xl font-bold mb-8">Kalkulator Kapasitor</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="text-left">
+                    <label class="text-[10px] font-bold text-slate-500 ml-2 uppercase">Nilai C1 (F)</label>
+                    <input type="number" id="c1" class="w-full p-4 mt-1 rounded-xl text-white font-mono" placeholder="0">
+                </div>
+                <div class="text-left">
+                    <label class="text-[10px] font-bold text-slate-500 ml-2 uppercase">Nilai C2 (F)</label>
+                    <input type="number" id="c2" class="w-full p-4 mt-1 rounded-xl text-white font-mono" placeholder="0">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="calculateCapacitor('seri')" class="py-4 bg-white/5 hover:bg-white/10 rounded-xl font-bold border border-white/5">SERI</button>
+                <button onclick="calculateCapacitor('paralel')" class="py-4 bg-purple-600 text-white rounded-xl font-black">PARALEL</button>
+            </div>
+            <div id="cap-result" class="mt-8 p-6 bg-purple-500/5 rounded-2xl border border-purple-500/20 hidden animate-pulse">
+                <p class="text-[10px] text-purple-400 font-bold uppercase">Kapasitansi Total</p>
+                <p id="cap-val" class="text-4xl font-black text-white mt-2">0 F</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="fixed bottom-4 left-0 w-full text-center pointer-events-none">
+        <p class="text-[9px] text-slate-600 uppercase tracking-widest">© 2026 Shidqi Nashrulloh</p>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        function scrollToSection(index) {
+            document.querySelectorAll('section')[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Active Dot Tracker
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = Array.from(document.querySelectorAll('section')).indexOf(entry.target);
+                    const dots = document.querySelectorAll('.dot');
+                    dots.forEach((d, i) => i === idx ? d.classList.add('active') : d.classList.remove('active'));
+                }
+            });
+        }, { threshold: 0.6 });
+
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+        // Logic Resistor
+        function calculateResistor(type) {
+            const r1 = parseFloat(document.getElementById('r1').value) || 0;
+            const r2 = parseFloat(document.getElementById('r2').value) || 0;
+            if (r1 === 0 && r2 === 0) return;
+            let total = type === 'seri' ? r1 + r2 : (r1 * r2) / (r1 + r2);
+            document.getElementById('res-val').innerText = total.toFixed(2).replace(/\.00$/, "") + " Ω";
+            document.getElementById('res-result').classList.remove('hidden');
+        }
+
+        // Logic Kapasitor
+        function calculateCapacitor(type) {
+            const c1 = parseFloat(document.getElementById('c1').value) || 0;
+            const c2 = parseFloat(document.getElementById('c2').value) || 0;
+            if (c1 === 0 && c2 === 0) return;
+            let total = type === 'paralel' ? c1 + c2 : (c1 * c2) / (c1 + c2);
+            document.getElementById('cap-val').innerText = total.toFixed(2).replace(/\.00$/, "") + " F";
+            document.getElementById('cap-result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
